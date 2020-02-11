@@ -1,0 +1,8 @@
+<h3>Create a Playlist</h3><br><br>
+
+<%= form_for @playlist do |f| %>
+    <%= f.label :name %>
+    <%= f.text_area :name %><br><br>
+    <!-- Include checkbox to add songs to playlist, as well as nested form to create new one -->
+    <%= f.submit %><br>
+<% end %>
