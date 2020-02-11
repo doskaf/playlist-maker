@@ -1,0 +1,9 @@
+<h3>Create a Song</h3><br><br>
+
+<%= form_for @song do |f| %>
+    <%= f.label :title %>
+    <%= f.text_area :title %><br>
+    <%= f.label :artist %>
+    <%= f.text_area :artist %><br>
+    <%= f.submit %>
+<% end %>
