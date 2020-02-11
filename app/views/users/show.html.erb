@@ -1,5 +1,10 @@
 <h3><%= @user.username %>'s Profile</h3><br><br>
 
+<h4>Playlists by This User: </h4>
+<% @user.playlists.each do |playlist| %>
+  <li><%= link_to playlist.name, playlist_path(playlist) %></li>
+<% end %><br>
+
 <%= form_tag user_path(@user.id), method: "delete" do %>
   <%= submit_tag "Delete #{@user.username}" %>
 <% end %>
