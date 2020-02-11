@@ -1,0 +1,2 @@
+- Add nested form for adding songs in playlist form
+- Only include delete buttons for user & playlist show pages if correct user is logged in
