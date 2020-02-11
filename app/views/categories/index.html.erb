@@ -1,0 +1,5 @@
+<h3>All Playlist Categories:</h3><br><br>
+
+<% @categories.each do |category| %>
+    <li><%= link_to category.name, category_path(category) %></li>
+<% end %>
