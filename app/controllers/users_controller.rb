@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     def update
         @user = User.find_by_id(params[:id])
         @user.update(user_params)
-        @user.save ? (redirect_to @user) : (render :new)
+        @user.save ? (redirect_to @user) : (render :edit)
     end
 
     def destroy
