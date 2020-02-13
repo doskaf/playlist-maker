@@ -3,3 +3,6 @@
 - Add playlist drop-down on song show page for playlists created by logged in user
 - Add navbar
 - Add scope method for playlists that lists songs by artist
+- Signin from other site
+- Display errors on forms
+- Write README
