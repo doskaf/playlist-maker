@@ -10,6 +10,15 @@
   </head>
 
   <body>
+    <% if logged_in? %>
+        <%= link_to "View Playlist Categories", categories_path %><br>
+        <%= link_to "Create a Playlist", new_playlist_path %><br>
+        <%= link_to "Logout", logout_path%><br>
+    <% else %>
+        <%= link_to "Log In", login_path %><br>
+        <%= link_to "Sign Up", signup_path %><br>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
