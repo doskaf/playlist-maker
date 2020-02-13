@@ -13,6 +13,14 @@ class PlaylistsController < ApplicationController
         end
     end
 
+    def index
+        if params[:user_id]
+            @playlists = User.find(params[:user_id]).playlists
+        else
+            @playlists = Playlist.all
+        end
+    end
+
     def show
         @playlist = Playlist.find_by_id(params[:id])
     end
