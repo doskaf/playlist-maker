@@ -3,4 +3,10 @@
 
 <% @playlist.songs.each do |song| %>
     <li><b><%= song.title %></b> by <b><%= song.artist %></b></li>
+<% end %><br><br>
+
+<% if playlist_owner? %>
+  <%= form_tag playlist_path(@playlist.id), method: "delete" do %>
+    <%= submit_tag "Delete #{@playlist.name}" %>
+  <% end %>
 <% end %>

@@ -13,7 +13,10 @@
     <% if logged_in? %>
         <%= link_to "View Playlist Categories", categories_path %><br>
         <%= link_to "Create a Playlist", new_playlist_path %><br>
-        <%= link_to "Logout", logout_path%><br>
+        <%= link_to "Create a Song", new_song_path %><br>
+        <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+          <input type=submit value='Logout'>
+        <% end %><br>
     <% else %>
         <%= link_to "Log In", login_path %><br>
         <%= link_to "Sign Up", signup_path %><br>
