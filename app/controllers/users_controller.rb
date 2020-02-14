@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find_by_id(params[:id])
+        render :'/page_not_found' if @user.nil?
     end
 
     def edit

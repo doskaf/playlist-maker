@@ -7,7 +7,7 @@ class PlaylistsController < ApplicationController
     def create
         @playlist = Playlist.new(playlist_params)
         if @playlist.save
-            redirect_to @playlist
+            redirect_to playlist_path(@path)
         else
             render :new
         end
@@ -23,6 +23,7 @@ class PlaylistsController < ApplicationController
 
     def show
         @playlist = Playlist.find_by_id(params[:id])
+        render :'/page_not_found' if @playlist.nil?
     end
 
     def edit

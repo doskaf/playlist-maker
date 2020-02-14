@@ -19,6 +19,7 @@ class SongsController < ApplicationController
 
     def show
         @song = Song.find_by_id(params[:id])
+        render :'/page_not_found' if @song.nil?
     end
 
     private
