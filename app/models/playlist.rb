@@ -14,4 +14,8 @@ class Playlist < ApplicationRecord
         self.category ? self.category.name : nil
     end
 
+    def self.by_category
+        self.includes(:category).order('categories.name')
+    end
+
 end

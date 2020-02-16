@@ -1,0 +1,5 @@
+<h3>Playlists by Category: </h3><br>
+
+<% @playlists.each do |p| %>
+    <li><%= link_to p.name, playlist_path(p) %> - <%= p.category.name %></li><br>
+<% end %>

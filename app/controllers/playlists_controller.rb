@@ -24,6 +24,10 @@ class PlaylistsController < ApplicationController
         end
     end
 
+    def by_category
+        @playlists = Playlist.by_category
+    end
+
     def show
         @playlist = Playlist.find_by_id(params[:id])
         render :'/page_not_found' if @playlist.nil?

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   delete '/users/:id', to: 'users#destroy'
 
+  match 'playlists/by_category' => 'playlists#by_category', :via => :get
   resources :playlists
   delete '/playlists/:id', to: 'playlists#destroy'
 
