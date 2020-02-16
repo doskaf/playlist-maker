@@ -1,5 +1,21 @@
 <h3>Edit User</h3><br><br>
 <%= form_for @user do |f| %>
+
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+            <h3>
+              <%= pluralize(@user.errors.count, "error") %>
+              prohibited this user from being edited:
+            </h3>
+
+            <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+        </div><br>
+    <% end %>
+
     <%= f.label :username %>
     <%= f.text_field :username %><br>
     <%= f.label :password %>

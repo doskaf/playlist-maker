@@ -1,8 +1,25 @@
 <h3>Edit <%= @playlist.name %></h3><br><br>
 
 <%= form_for @playlist do |f| %>
+
+    <% if @playlist.errors.any? %>
+        <div id="error_explanation">
+            <h3>
+              <%= pluralize(@playlist.errors.count, "error") %>
+              prohibited this playlist from being edited:
+            </h3>
+
+            <ul>
+            <% @playlist.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+        </div><br>
+    <% end %>
+
     <%= f.label :name %>
     <%= f.text_field :name %><br><br>
+
     <%= f.label :category %>
     <%= f.text_field :category_name, list: "categories_autocomplete" %>
     <datalist id="categories_autocomplete">
@@ -10,6 +27,7 @@
         <option value="<%= category.name %>">
     <% end %>
     </datalist><br><br>
+
     <h4>Add Songs to Your Playlist:</h4>
     <%= f.collection_check_boxes :song_ids, Song.all, :id, :song_by %><br><br>
     <%= f.submit %><br>

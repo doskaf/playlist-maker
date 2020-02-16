@@ -1,3 +1,2 @@
 - Signin from other site
-- Display errors on forms
 - Write README

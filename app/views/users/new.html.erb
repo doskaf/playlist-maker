@@ -1,9 +1,26 @@
 <h3>Sign Up</h3><br><br>
 <%= form_for @user do |f| %>
+
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+            <h3>
+              <%= pluralize(@user.errors.count, "error") %>
+              prohibited this user from being created:
+            </h3>
+
+            <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+        </div><br>
+    <% end %>
+
     <%= f.label :username %>
     <%= f.text_field :username %><br>
     <%= f.label :password %>
     <%= f.password_field :password %><br><br>
+
     <h3>Create Your First Playlist: </h3>
     <%= f.fields_for :playlists do |p| %>
         <%= p.label :name %>
