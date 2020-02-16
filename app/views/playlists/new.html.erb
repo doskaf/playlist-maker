@@ -10,6 +10,7 @@
         <option value="<%= category.name %>">
     <% end %>
     </datalist><br><br>
-    <!-- Include checkbox to add songs to playlist, as well as nested form to create new one -->
+    <h4>Add Songs to Your Playlist:</h4>
+    <%= f.collection_check_boxes :song_ids, Song.all, :id, :song_by %><br><br>
     <%= f.submit %><br>
 <% end %>

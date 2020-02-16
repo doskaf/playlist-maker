@@ -6,7 +6,9 @@
 <% end %><br><br>
 
 <% if playlist_owner? %>
-  <%= form_tag playlist_path(@playlist.id), method: "delete" do %>
-    <%= submit_tag "Delete #{@playlist.name}" %>
+    <%= link_to "Edit Playlist", edit_playlist_path(@playlist) %><br><br> 
+    <%= link_to "Add Songs to Playlist", songs_path %><br><br>
+    <%= form_tag playlist_path(@playlist.id), method: "delete" do %>
+        <%= submit_tag "Delete #{@playlist.name}" %>
   <% end %>
 <% end %>

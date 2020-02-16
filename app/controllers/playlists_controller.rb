@@ -1,7 +1,9 @@
 class PlaylistsController < ApplicationController
 
     def new
+        redirect_to login_path if !logged_in?
         @playlist = Playlist.new
+        @song = @playlist.songs.build
     end
 
     def create
@@ -29,6 +31,7 @@ class PlaylistsController < ApplicationController
 
     def edit
         @playlist = Playlist.find_by_id(params[:id])
+        render :'/page_not_found' if current_user != Playlist.find_by_id(params[:id]).user
     end
 
     def update
@@ -47,7 +50,7 @@ class PlaylistsController < ApplicationController
     private
 
     def playlist_params
-        params.require(:playlist).permit(:name, :category_name)
+        params.require(:playlist).permit(:name, :category_name, :songs_ids => [])
     end
 
 end

@@ -4,6 +4,7 @@ class Playlist < ApplicationRecord
     has_many :songs, through: :playlist_songs
     belongs_to :category
     belongs_to :user
+    accepts_nested_attributes_for :songs
 
     def category_name=(name)
         self.category = Category.find_or_create_by(name: name)

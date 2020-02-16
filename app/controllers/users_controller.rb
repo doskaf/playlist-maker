@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
     def new
         @user = User.new
+        @playlist = @user.playlists.build
     end
 
     def create
@@ -21,6 +22,7 @@ class UsersController < ApplicationController
 
     def edit
         @user = User.find_by_id(params[:id])
+        render :'/page_not_found' if current_user != User.find_by_id(params[:id])
     end
 
     def update
@@ -39,7 +41,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:username, :password)
+        params.require(:user).permit(:username, :password, :playlists_attributes => [:name, :category])
     end
 
 end
