@@ -2,25 +2,31 @@ class SessionsController < ApplicationController
     
     def new
     end
- 
+
     def create
-        if params[:username]
+        if auth_hash = request.env["omniauth.auth"]
+            oauth_nickname = request.env["omniauth.auth"]["info"]["nickname"]
+            if @user = User.find_by(:username => oauth_nickname)
+                session[:id] = @user.id
+                redirect_to '/'
+            else
+                @user = User.new(:username => oauth_nickname, :password => SecureRandom.hex)
+                if @user.save
+                    session[:id] = @user.id
+                    redirect_to '/'
+                else
+                    raise @user.errors.full_messages.inspect
+                end
+            end
+        else
             @user = User.find_by(username: params[:username]) if params[:username]
             if @user && @user.authenticate(params[:password])
                 session[:id] = @user.id
-                redirect_to '/categories'
+                redirect_to '/'
             else
                 flash[:alert] = "Incorrect Password."
                 render :new
             end
-        else
-            @user = User.find_or_create_by(uid: auth['uid']) do |u|
-                u.name = auth['info']['name']
-                u.email = auth['info']['email']
-                u.image = auth['info']['image']
-            end
-            session[:user_id] = @user.id
-            redirect_to '/categories'
         end
     end
 
