@@ -1,24 +1,32 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to Playlist Maker, a simple music organizer/library!
 
-Things you may want to cover:
+## How to Use Playlist Maker
 
-* Ruby version
+With Playlist Maker, you can create a profile, build your own playlists, and add song contributions to the database!
 
-* System dependencies
 
-* Configuration
+## Installation
 
-* Database creation
+Clone this repository and run:
 
-* Database initialization
+    $ bundle install
 
-* How to run the test suite
+And then execute:
 
-* Services (job queues, cache servers, search engines, etc.)
+    $ rake db:migrate
 
-* Deployment instructions
+Finally, run
 
-* ...
+    $ rails s
+
+You should be able to see the application at `localhost:3000`
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/doskaf/playlist-maker. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+## License
+
+The web application is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

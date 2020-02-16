@@ -1,2 +1,0 @@
-- Signin from other site
-- Write README
