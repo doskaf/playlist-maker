@@ -16,17 +16,4 @@ module ApplicationHelper
         (logged_in?) && (current_user == Playlist.find_by_id(params[:id]).user)
     end
 
-    def authenticate
-        redirect "/login" if !logged_in?
-    end
-
-    def login(username, password)
-        user = User.find_by(:username => username)
-        if  user && user.authenticate(password)
-            session[:id] = user.id
-        else
-            redirect '/login'
-        end
-    end
-
 end

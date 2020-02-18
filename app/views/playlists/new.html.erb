@@ -29,6 +29,8 @@
     </datalist><br><br>
 
     <h4>Add Songs to Your Playlist:</h4>
-    <%= f.collection_check_boxes :song_ids, Song.all, :id, :song_by %><br><br>
+    <%= f.collection_check_boxes :song_ids, Song.all, :id, :song_by do |s| %><br><br>
+      <%= s.label {s.check_box + s.text} %>
+    <% end %><br><br>
     <%= f.submit %><br>
 <% end %>
