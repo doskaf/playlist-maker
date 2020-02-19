@@ -35,7 +35,7 @@ class PlaylistsController < ApplicationController
 
     def edit
         @playlist = Playlist.find_by_id(params[:id])
-        render :'/page_not_found' if current_user != Playlist.find_by_id(params[:id]).user
+        render :'/page_not_found' if @playlist.nil? || current_user != Playlist.find_by_id(params[:id]).user
     end
 
     def update
