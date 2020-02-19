@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
     def logged_in?
         !!current_user
     end
+
+    def playlist_owner?
+        (logged_in?) && (current_user == Playlist.find_by_id(params[:id]).user)
+    end
 end

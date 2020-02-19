@@ -1,4 +1,5 @@
 class PlaylistsController < ApplicationController
+    before_action :redirect_if_not_owner, only: [:edit, :update]
 
     def new
         redirect_to login_path if !logged_in?
@@ -35,13 +36,13 @@ class PlaylistsController < ApplicationController
 
     def edit
         @playlist = Playlist.find_by_id(params[:id])
-        render :'/page_not_found' if @playlist.nil? || current_user != Playlist.find_by_id(params[:id]).user
     end
 
     def update
         @playlist = Playlist.find_by_id(params[:id])
-        @playlist.update(playlist_params)
+        @playlist.update(playlist_params)    
         @playlist.save ? (redirect_to @playlist) : (render :edit)
+
     end
 
     def destroy
@@ -52,6 +53,10 @@ class PlaylistsController < ApplicationController
     end
 
     private
+
+    def redirect_if_not_owner
+        redirect_to root_path if !playlist_owner?
+    end
 
     def playlist_params
         params.require(:playlist).permit(:name, :category_name, :song_ids => [])
