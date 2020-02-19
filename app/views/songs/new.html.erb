@@ -2,20 +2,7 @@
 
 <%= form_for @song do |f| %>
 
-    <% if @song.errors.any? %>
-        <div id="error_explanation">
-            <h3>
-              <%= pluralize(@song.errors.count, "error") %>
-              prohibited this song from being created:
-            </h3>
-
-            <ul>
-            <% @song.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-            </ul>
-        </div><br>
-    <% end %>
+    <%= render partial: "layouts/errors", locals: {object: @song} %>
 
     <%= f.label :title %>
     <%= f.text_field :title %><br><br>
