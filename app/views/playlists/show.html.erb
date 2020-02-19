@@ -1,5 +1,6 @@
-<h3><%= @playlist.name %></h3>
-<h4>Created by <%= link_to @playlist.user.username, user_path(@playlist.user) %></h4><br>
+<h2><%= @playlist.name %></h2>
+<h4>Created by <%= link_to @playlist.user.username, user_path(@playlist.user) %></h4>
+<p><b>Category: </b><%= link_to @playlist.category.name, category_path(@playlist.category) %><p><br>
 
 <% @playlist.songs.each do |song| %>
     <li><b><%= song.title %></b> by <b><%= song.artist %></b></li>
@@ -7,7 +8,7 @@
 
 <% if playlist_owner? %>
     <%= link_to "Edit Playlist", edit_playlist_path(@playlist) %><br><br> 
-    <%= link_to "Browse Songs", songs_path %><br><br>
+    <%= link_to "Browse Songs", songs_path %><br><br><br>
     <%= form_tag playlist_path(@playlist.id), method: "delete" do %>
         <%= submit_tag "Delete #{@playlist.name}" %>
   <% end %>

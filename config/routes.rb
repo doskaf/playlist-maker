@@ -16,7 +16,9 @@ Rails.application.routes.draw do
 
   resources :songs
 
-  resources :categories
+  resources :categories do
+    resources :playlists, only: [:new]
+  end
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
